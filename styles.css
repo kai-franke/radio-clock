@@ -1,10 +1,14 @@
 /* Eltern-Container mit Perspektive, damit 3D-Effekte sichtbar werden */
 .flip-card-container {
-  background-color: rgb(218, 184, 121);
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  background-color: transparent;
+  border: 1px solid #ccc;
   perspective: 1000px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
-  width: 200px;
+  width: 275px;
   height: 400px;
   margin: 50px;
+  position: absolute;
 }
 
 /* Das „innere“ Flip-Element, das tatsächlich rotiert */
@@ -14,7 +18,7 @@
   position: relative;
   transform-style: preserve-3d; /* ermöglicht 3D-Ebenen */
   transform-origin: bottom center; /* Drehen um die Unterkante */
-  transition: transform 0.6s cubic-bezier(.84,0,.98,.56);
+  transition: transform 0.6s cubic-bezier(0.84, 0, 0.98, 0.56);
 }
 
 /* Vorder- und Rückseite platzieren */
@@ -27,7 +31,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 400px;
+  overflow: hidden;
   color: #fff;
 }
 
@@ -46,4 +51,14 @@
 /* Hover-Effekt: beim Hovern soll die Karte um -180° nach vorne kippen */
 .flip-card-container:hover .flip-card {
   transform: rotateX(-180deg);
+}
+
+.number-top {
+  position: absolute;
+  top: -25px;
+}
+
+.number-bottom {
+  position: absolute;
+  top: -225px;
 }

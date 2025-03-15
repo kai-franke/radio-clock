@@ -6,18 +6,33 @@
     <title>Radio Clock</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="flip-card-container">
-        <div class="flip-card">
-          <div class="flip-card-front">
-            FRONT
-          </div>
-          <div class="flip-card-back">
-            BACK
-          </div>
+    <div class="flip-card-container" style="z-index: 1">
+      <div class="flip-card">
+        <div class="flip-card-front">
+          <div class="number-top">4</div>
+        </div>
+        <div class="flip-card-back">
+          <div class="number-bottom">5</div>
         </div>
       </div>
-      
+    </div>
+    <div class="flip-card-container">
+      <div class="flip-card">
+        <div class="flip-card-front">
+          <div class="number-top">5</div>
+        </div>
+        <div class="flip-card-back">
+          <div class="number-bottom">4</div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
