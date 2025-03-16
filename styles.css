@@ -1,15 +1,16 @@
 :root {
   --gradient-1: linear-gradient(
     43deg,
-    rgba(72, 72, 74, 1) 0%,
+    rgba(57, 57, 60, 1) 0%,
     rgba(35, 35, 37, 1) 35%,
-    rgba(57, 58, 60, 1) 100%
+    rgba(31, 31, 32, 1) 100%
   );
 }
 
 /* Eltern-Container mit Perspektive, damit 3D-Effekte sichtbar werden */
 .flip-cards-container {
-  font-family: "Inter", sans-serif;
+  /* font-family: "Manrope", sans-serif; */
+  font-family: "Rubik", sans-serif;
   font-weight: 800;
   perspective: 1000px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
   width: 300px;
@@ -65,13 +66,13 @@
 .number-one,
 .number-three {
   position: absolute;
-  top: -40px;
+  top: -30px;
 }
 
 .number-two,
 .number-four {
   position: absolute;
-  top: -240px;
+  top: -230px;
 }
 
 .flip-card.flip {
