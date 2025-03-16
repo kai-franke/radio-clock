@@ -93,3 +93,7 @@
   box-shadow: rgba(0, 0, 0, 0.7) 0px 7px 15px;
   border-radius: 25px;
 }
+
+.no-transition {
+  transition: none;
+}
