@@ -7,6 +7,10 @@
   );
 }
 
+body {
+  background: var(--gradient-1);
+}
+
 /* Eltern-Container mit Perspektive, damit 3D-Effekte sichtbar werden */
 .flip-cards-container {
   /* font-family: "Manrope", sans-serif; */
@@ -14,20 +18,20 @@
   font-weight: 800;
   perspective: 1000px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
   width: 300px;
-  height: 400px;
+  height: 410px;
   margin: 50px;
   position: absolute;
 }
 
 /* Das „innere“ Flip-Element, das tatsächlich rotiert */
 .flip-card {
-  background-color: transparent;
+  /* background-color: transparent; */
   width: 100%;
   height: 200px;
   position: relative;
   transform-style: preserve-3d; /* ermöglicht 3D-Ebenen */
-  transform-origin: bottom center; /* Drehen um die Unterkante */
-  transition: transform 0.6s cubic-bezier(0.84, 0, 0.98, 0.56);
+  transform-origin: center calc(100% + 10px);
+  transition: transform 1s cubic-bezier(0.84, 0, 0.98, 0.56);
 }
 
 /* Vorder- und Rückseite platzieren */
@@ -54,13 +58,31 @@
 
 .div2 {
   transform: rotateX(180deg);
+  top: 10px;
 }
 
 .div3 {
+  border-radius: 25px;
+  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
 }
 
 .div4 {
-  top: 200px;
+  top: 210px;
+  border-radius: 25px;
+  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
+}
+
+.div2::before,
+.div4::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15); /* 10% schwarze Überlagerung */
+  pointer-events: none; /* das Overlay blockiert keine Interaktionen */
+  z-index: 1;
 }
 
 .number-one,
@@ -87,10 +109,10 @@
   height: 10px;
   width: calc(100% - 35px);
   margin-left: 15px;
-  background-color: #232325;
+  background: none;
   position: absolute;
-  top: 195px;
-  box-shadow: rgba(0, 0, 0, 0.7) 0px 7px 15px;
+  top: 200px;
+  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
   border-radius: 25px;
 }
 
