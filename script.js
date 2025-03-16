@@ -1,35 +1,33 @@
-const topFlipCard = document.getElementById("topFlipCard");
-const numberTop = document.querySelector(".number-one");
-const numberBottom = document.querySelector(".number-two");
-const numberVeryBottom = document.querySelector(".number-four");
-const numberTopBackground = document.querySelector(".number-three");
-const flipBtn = document.getElementById("flipBtn");
+const flipButton = document.getElementById("flipButton");
+const flipCardForeground = document.getElementById("flipCardForeground");
+const numberForegroundTop = document.querySelector(".number-one");
+const numberForegroundBottom = document.querySelector(".number-two");
+const numberBackgroundTop = document.querySelector(".number-three");
+const numberBackgroundBottom = document.querySelector(".number-four");
 
-let currentNumber = parseInt(numberTop.textContent, 10);
+let currentNumber = parseInt(numberForegroundTop.textContent, 10);
 
-// Klick-Event für den Button
-flipBtn.addEventListener("click", () => {
-  // Nächste Zahl berechnen (nach 9 kommt 0)
-  let nextNumber = (currentNumber + 1) % 10;
+flipButton.addEventListener("click", () => {
+  let nextNumber = (currentNumber + 1) % 10; // Nächste Zahl berechnen (nach 9 kommt 0)
+  numberForegroundBottom.textContent = nextNumber;
+  numberBackgroundTop.textContent = nextNumber;
 
-  // Die "Rückseite" bekommt schon mal die nächste Zahl
-  numberBottom.textContent = nextNumber;
-
-  // Flip auslösen
-  topFlipCard.classList.add("flip");
+  console.log('before add flip')
+  flipCardForeground.classList.add("flip"); // Flip auslösen
 
   // Nach Ende der Transition:
-  // -> Obere Zahl aktualisieren, Flip-Klasse entfernen
   const onFlipEnd = () => {
-    topFlipCard.classList.add("no-transition");
-    topFlipCard.classList.remove("flip");
-    numberTop.textContent = nextNumber;
+    console.log('onFlipEnd start')
+    flipCardForeground.classList.add("no-transition"); // Transition für das Enfernen der .flip class deaktivieren
+    flipCardForeground.classList.remove("flip");
+    numberForegroundTop.textContent = nextNumber;
+    numberBackgroundBottom.textContent = nextNumber;
     currentNumber = nextNumber;
-    numberVeryBottom.textContent = nextNumber;
+    flipCardForeground.removeEventListener("transitionend", onFlipEnd);
+    console.log('onFlipEnd end')
   };
   
-  numberTopBackground.textContent = nextNumber;
-  // Wenn die Flip-Animation fertig ist, setze den Text in der Front
-  topFlipCard.addEventListener("transitionend", onFlipEnd);
-  topFlipCard.classList.remove("no-transition");
+  flipCardForeground.classList.remove("no-transition"); // Wieso kann das nicht innerhalb von onFlipEnd geschehen?
+  console.log('before transitionend')
+  flipCardForeground.addEventListener("transitionend", onFlipEnd);
 });

@@ -97,12 +97,11 @@ body {
   top: -230px;
 }
 
-.flip-card.flip {
-  transform: rotateX(-180deg);
+#flipCardBackground {
+  position: absolute;
 }
 
-#topBackground {
-  position: absolute;
+#flipCardForeground {
 }
 
 .divider {
@@ -118,4 +117,8 @@ body {
 
 .no-transition {
   transition: none;
+}
+
+.flip {
+  transform: rotateX(-180deg);
 }
