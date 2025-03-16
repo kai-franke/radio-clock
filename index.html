@@ -9,30 +9,160 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anta&family=Bebas+Neue&family=Gemunu+Libre:wght@200..800&family=Gugi&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sarpanch:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <article class="flip-clock__digit">
-      <div class="flip-clock__card flip-clock__card--background">
-        <div class="flip-clock__half flip-clock__half--upper flip-clock__half--shadowed">
-          <div class="flip-clock__digit-value flip-clock__digit-value--upper flip-clock__digit-value--background">0</div>
+    <!-- Container, der alle vier Ziffern relativ aufnimmt -->
+    <section class="clock-container">
+      <!-- Stunden-Zehner -->
+      <article id="hours-tens" class="flip-clock__digit">
+        <div class="flip-clock__card flip-clock__card--background">
+          <div class="flip-clock__half flip-clock__half--upper flip-clock__half--shadowed">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--upper flip-clock__digit-value--background"
+            >
+              0
+            </div>
+          </div>
+          <div class="flip-clock__half flip-clock__half--lower flip-clock__half--shadowed">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--lower flip-clock__digit-value--background"
+            >
+              0
+            </div>
+          </div>
         </div>
-        <div class="flip-clock__half flip-clock__half--lower flip-clock__half--shadowed">
-          <div class="flip-clock__digit-value flip-clock__digit-value--lower flip-clock__digit-value--background">0</div>
+        <div class="flip-clock__card flip-clock__card--foreground">
+          <div class="flip-clock__half flip-clock__half--upper">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--upper flip-clock__digit-value--foreground"
+            >
+              0
+            </div>
+          </div>
+          <div class="flip-clock__half flip-clock__half--lower">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--lower flip-clock__digit-value--foreground"
+            >
+              0
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="flip-clock__card flip-clock__card--foreground">
-        <div class="flip-clock__half flip-clock__half--upper ">
-          <div class="flip-clock__digit-value flip-clock__digit-value--upper flip-clock__digit-value--foreground">0</div>
+        <div class="divider"></div>
+      </article>
+
+      <!-- Stunden-Einer -->
+      <article id="hours-ones" class="flip-clock__digit">
+        <div class="flip-clock__card flip-clock__card--background">
+          <div class="flip-clock__half flip-clock__half--upper flip-clock__half--shadowed">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--upper flip-clock__digit-value--background"
+            >
+              0
+            </div>
+          </div>
+          <div class="flip-clock__half flip-clock__half--lower flip-clock__half--shadowed">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--lower flip-clock__digit-value--background"
+            >
+              0
+            </div>
+          </div>
         </div>
-        <div class="flip-clock__half flip-clock__half--lower ">
-          <div class="flip-clock__digit-value flip-clock__digit-value--lower flip-clock__digit-value--foreground">0</div>
+        <div class="flip-clock__card flip-clock__card--foreground">
+          <div class="flip-clock__half flip-clock__half--upper">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--upper flip-clock__digit-value--foreground"
+            >
+              0
+            </div>
+          </div>
+          <div class="flip-clock__half flip-clock__half--lower">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--lower flip-clock__digit-value--foreground"
+            >
+              0
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="divider"></div>
-    </article>
-    <button id="flipButton">Flip!</button>
+        <div class="divider"></div>
+      </article>
+
+      <!-- Minuten-Zehner -->
+      <article id="minutes-tens" class="flip-clock__digit">
+        <div class="flip-clock__card flip-clock__card--background">
+          <div class="flip-clock__half flip-clock__half--upper flip-clock__half--shadowed">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--upper flip-clock__digit-value--background"
+            >
+              0
+            </div>
+          </div>
+          <div class="flip-clock__half flip-clock__half--lower flip-clock__half--shadowed">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--lower flip-clock__digit-value--background"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div class="flip-clock__card flip-clock__card--foreground">
+          <div class="flip-clock__half flip-clock__half--upper">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--upper flip-clock__digit-value--foreground"
+            >
+              0
+            </div>
+          </div>
+          <div class="flip-clock__half flip-clock__half--lower">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--lower flip-clock__digit-value--foreground"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+      </article>
+
+      <!-- Minuten-Einer -->
+      <article id="minutes-ones" class="flip-clock__digit">
+        <div class="flip-clock__card flip-clock__card--background">
+          <div class="flip-clock__half flip-clock__half--upper flip-clock__half--shadowed">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--upper flip-clock__digit-value--background"
+            >
+              0
+            </div>
+          </div>
+          <div class="flip-clock__half flip-clock__half--lower flip-clock__half--shadowed">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--lower flip-clock__digit-value--background"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div class="flip-clock__card flip-clock__card--foreground">
+          <div class="flip-clock__half flip-clock__half--upper">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--upper flip-clock__digit-value--foreground"
+            >
+              0
+            </div>
+          </div>
+          <div class="flip-clock__half flip-clock__half--lower">
+            <div
+              class="flip-clock__digit-value flip-clock__digit-value--lower flip-clock__digit-value--foreground"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+      </article>
+    </section>
   </body>
 </html>

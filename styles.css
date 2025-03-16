@@ -5,13 +5,13 @@
     rgba(35, 35, 37, 1) 35%,
     rgba(31, 31, 32, 1) 100%
   );
+  --shadow-1: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
 }
 
 body {
   background: var(--gradient-1);
 }
 
-/* Eltern-Container mit Perspektive, damit 3D-Effekte sichtbar werden */
 .flip-clock__digit {
   /* font-family: "Manrope", sans-serif; */
   font-family: "Rubik", sans-serif;
@@ -20,12 +20,10 @@ body {
   width: 300px;
   height: 410px;
   margin: 50px;
-  position: absolute;
+  position: absolute; /* NICHT geändert */
 }
 
-/* Das „innere“ Flip-Element, das tatsächlich rotiert */
 .flip-clock__card {
-  /* background-color: transparent; */
   width: 100%;
   height: 200px;
   position: relative;
@@ -34,7 +32,6 @@ body {
   transition: transform 1s cubic-bezier(0.84, 0, 0.98, 0.56);
 }
 
-/* Vorder- und Rückseite platzieren */
 .flip-clock__half {
   position: absolute;
   width: 100%;
@@ -54,9 +51,6 @@ body {
   position: absolute;
 }
 
-.flip-clock__card--foreground {
-}
-
 .flip-clock__card--foreground .flip-clock__half--lower {
   transform: rotateX(180deg);
   top: 10px;
@@ -68,9 +62,10 @@ body {
 
 .flip-clock__half--shadowed {
   border-radius: 25px;
-  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
+  box-shadow: var(--shadow-1);
 }
 
+/*Abdunkeln der unteren Hälften*/
 .flip-clock__half--lower::before {
   content: "";
   position: absolute;
@@ -78,7 +73,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.15); /* 10% schwarze Überlagerung */
+  background: rgba(0, 0, 0, 0.15);
   z-index: 1;
 }
 
@@ -99,7 +94,7 @@ body {
   background: none;
   position: absolute;
   top: 200px;
-  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
+  box-shadow: var(--shadow-1);
   border-radius: 25px;
 }
 
@@ -109,4 +104,45 @@ body {
 
 .flip {
   transform: rotateX(-180deg);
+}
+
+/* 
+   +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   NEUE REGELN für .clock-container und die 4 Digit-Artikel
+   +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*/
+.clock-container {
+  /* Legt eine große Fläche an, in der die vier Digits platziert werden */
+  position: relative;
+  /* Breite und Höhe so wählen, dass alle 4 Ziffern Platz haben */
+  width: 1600px;
+  height: 600px;
+  /* z.B. zentriert die Container-Sektion im Body */
+  margin: 0 auto;
+}
+
+/* 
+   Wir nutzen nth-of-type, um den einzelnen Digit-Elementen 
+   unterschiedliche left-Offsets zu geben.
+   Jede Ziffer ist 300px breit + margin: 50px. 
+   Das bedeutet, wir rücken sie in 400er-Schritten nach rechts.
+*/
+.clock-container .flip-clock__digit:nth-of-type(1) {
+  left: 0;
+  top: 0;
+}
+
+.clock-container .flip-clock__digit:nth-of-type(2) {
+  left: 400px; /* 300 + 50 margin (etwa) */
+  top: 0;
+}
+
+.clock-container .flip-clock__digit:nth-of-type(3) {
+  left: 800px;
+  top: 0;
+}
+
+.clock-container .flip-clock__digit:nth-of-type(4) {
+  left: 1200px;
+  top: 0;
 }
