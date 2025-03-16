@@ -2,7 +2,6 @@
 .flip-card-container {
   font-family: "Inter", sans-serif;
   font-weight: 800;
-  background-color: transparent;
   border: 1px solid #ccc;
   perspective: 1000px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
   width: 275px;
@@ -13,6 +12,7 @@
 
 /* Das „innere“ Flip-Element, das tatsächlich rotiert */
 .flip-card {
+  background-color: violet;
   width: 100%;
   height: 200px;
   position: relative;
@@ -22,8 +22,9 @@
 }
 
 /* Vorder- und Rückseite platzieren */
-.flip-card-front,
-.flip-card-back {
+.div1,
+.div2,
+.div3 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -36,29 +37,30 @@
   color: #fff;
 }
 
-/* Vorderseite */
-.flip-card-front {
+.div1 {
   background: #2196f3;
 }
 
-/* Rückseite (standardmäßig um 180° gekippt, 
-     damit sie nach dem Flip richtig zu sehen ist) */
-.flip-card-back {
-  background: #ff5722;
+.div2 {
+  background: #22ff34;
   transform: rotateX(180deg);
 }
 
-/* Hover-Effekt: beim Hovern soll die Karte um -180° nach vorne kippen */
-.flip-card-container:hover .flip-card {
+.div3 {
+  background-color: red;
+}
+
+.flip-card.flip {
   transform: rotateX(-180deg);
 }
 
-.number-top {
+.number-one {
   position: absolute;
   top: -25px;
 }
 
-.number-bottom {
+.number-bottom,
+.number-very-bottom {
   position: absolute;
   top: -225px;
 }
