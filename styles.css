@@ -1,10 +1,18 @@
+:root {
+  --gradient-1: linear-gradient(
+    43deg,
+    rgba(72, 72, 74, 1) 0%,
+    rgba(35, 35, 37, 1) 35%,
+    rgba(57, 58, 60, 1) 100%
+  );
+}
+
 /* Eltern-Container mit Perspektive, damit 3D-Effekte sichtbar werden */
-.flip-card-container {
+.flip-cards-container {
   font-family: "Inter", sans-serif;
   font-weight: 800;
-  border: 1px solid #ccc;
   perspective: 1000px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
-  width: 275px;
+  width: 300px;
   height: 400px;
   margin: 50px;
   position: absolute;
@@ -12,7 +20,7 @@
 
 /* Das „innere“ Flip-Element, das tatsächlich rotiert */
 .flip-card {
-  background-color: violet;
+  background-color: transparent;
   width: 100%;
   height: 200px;
   position: relative;
@@ -24,7 +32,8 @@
 /* Vorder- und Rückseite platzieren */
 .div1,
 .div2,
-.div3 {
+.div3,
+.div4 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -35,32 +44,51 @@
   font-size: 400px;
   overflow: hidden;
   color: #fff;
+  background: var(--gradient-1);
+  border-radius: 25px;
 }
 
 .div1 {
-  background: #2196f3;
 }
 
 .div2 {
-  background: #22ff34;
   transform: rotateX(180deg);
 }
 
 .div3 {
-  background-color: red;
+}
+
+.div4 {
+  top: 200px;
+}
+
+.number-one,
+.number-three {
+  position: absolute;
+  top: -40px;
+}
+
+.number-two,
+.number-four {
+  position: absolute;
+  top: -240px;
 }
 
 .flip-card.flip {
   transform: rotateX(-180deg);
 }
 
-.number-one {
+#topBackground {
   position: absolute;
-  top: -25px;
 }
 
-.number-bottom,
-.number-very-bottom {
+.divider {
+  height: 10px;
+  width: calc(100% - 35px);
+  margin-left: 15px;
+  background-color: #232325;
   position: absolute;
-  top: -225px;
+  top: 195px;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 7px 15px;
+  border-radius: 25px;
 }

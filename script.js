@@ -1,7 +1,8 @@
 const topFlipCard = document.getElementById("topFlipCard");
 const numberTop = document.querySelector(".number-one");
-const numberBottom = document.querySelector(".number-bottom");
-const numberVeryBottom = document.querySelector(".number-very-bottom");
+const numberBottom = document.querySelector(".number-two");
+const numberVeryBottom = document.querySelector(".number-four");
+const numberTopBackground = document.querySelector(".number-three");
 const flipBtn = document.getElementById("flipBtn");
 
 // Starte mit der Zahl, die aktuell oben steht (im Beispiel 4)
@@ -27,10 +28,8 @@ flipBtn.addEventListener("click", () => {
     numberTop.textContent = nextNumber;
     currentNumber = nextNumber;
     numberVeryBottom.textContent = nextNumber;
-
-    // // Nur einmal auf den Transition-Ende reagieren
-    // topFlipCard.removeEventListener("transitionend", onFlipEnd);
   };
+  numberTopBackground.textContent = nextNumber;
 
   // Wenn die Flip-Animation fertig ist, setze den Text in der Front
   topFlipCard.addEventListener("transitionend", onFlipEnd);
