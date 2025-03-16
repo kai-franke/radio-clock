@@ -12,7 +12,7 @@ body {
 }
 
 /* Eltern-Container mit Perspektive, damit 3D-Effekte sichtbar werden */
-.flip-cards-container {
+.flip-clock__digit {
   /* font-family: "Manrope", sans-serif; */
   font-family: "Rubik", sans-serif;
   font-weight: 800;
@@ -24,7 +24,7 @@ body {
 }
 
 /* Das „innere“ Flip-Element, das tatsächlich rotiert */
-.flip-card {
+.flip-clock__card {
   /* background-color: transparent; */
   width: 100%;
   height: 200px;
@@ -35,10 +35,7 @@ body {
 }
 
 /* Vorder- und Rückseite platzieren */
-.div1,
-.div2,
-.div3,
-.div4 {
+.flip-clock__half {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -53,27 +50,28 @@ body {
   border-radius: 25px;
 }
 
-.div1 {
+.flip-clock__card--background {
+  position: absolute;
 }
 
-.div2 {
+.flip-clock__card--foreground {
+}
+
+.flip-clock__card--foreground .flip-clock__half--lower {
   transform: rotateX(180deg);
   top: 10px;
 }
 
-.div3 {
-  border-radius: 25px;
-  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
-}
-
-.div4 {
+.flip-clock__card--background .flip-clock__half--lower {
   top: 210px;
+}
+
+.flip-clock__half--shadowed {
   border-radius: 25px;
   box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
 }
 
-.div2::before,
-.div4::before {
+.flip-clock__half--lower::before {
   content: "";
   position: absolute;
   top: 0;
@@ -81,27 +79,17 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.15); /* 10% schwarze Überlagerung */
-  pointer-events: none; /* das Overlay blockiert keine Interaktionen */
   z-index: 1;
 }
 
-.number-one,
-.number-three {
+.flip-clock__digit-value--upper {
   position: absolute;
   top: -30px;
 }
 
-.number-two,
-.number-four {
+.flip-clock__digit-value--lower {
   position: absolute;
   top: -230px;
-}
-
-#flipCardBackground {
-  position: absolute;
-}
-
-#flipCardForeground {
 }
 
 .divider {
