@@ -1,5 +1,6 @@
+/* Basis-Variablen – der Faktor passt sich über clamp() dynamisch an */
 :root {
-  --factor: 1rem;
+  --factor: clamp(0.5rem, 1vw, 1.5rem);
   --border-radius: calc(var(--factor) * 2);
   --box-shadow-1: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
   --gradient-1: linear-gradient(
@@ -12,27 +13,36 @@
 
 body {
   background: var(--gradient-1);
+  margin: 0;
+  padding: 0;
 }
 
-/* Eltern-Container mit Perspektive, damit 3D-Effekte sichtbar werden */
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--factor) * 1);
+  padding: calc(var(--factor) * 2);
+  height: 100vh;
+  flex-wrap: no-wrap;
+}
+
 .flip-clock__digit {
-  /* font-family: "Manrope", sans-serif; */
   font-family: "Rubik", sans-serif;
   font-weight: 800;
-  perspective: 1500px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
+  perspective: 1500px;
   width: calc(var(--factor) * 18.5);
   height: calc(var(--factor) * 25.5);
-  margin: calc(var(--factor) * 2);
-  position: absolute;
+  position: relative;
+
 }
 
-/* Das „innere“ Flip-Element, das tatsächlich rotiert */
 .flip-clock__card {
   width: 100%;
   height: calc(var(--factor) * 12.5);
   position: relative;
-  transform-style: preserve-3d; /* ermöglicht 3D-Ebenen */
-  transform-origin: center calc(100% + var(--factor) * 0.5);
+  transform-style: preserve-3d;
+  transform-origin: center calc(100% + calc(var(--factor) * 0.5));
   transition: transform 1s cubic-bezier(0.84, 0, 0.98, 0.56);
 }
 
@@ -61,7 +71,7 @@ body {
 }
 
 .flip-clock__card--background .flip-clock__half--lower {
-  top: calc(var(--factor) * 13);;
+  top: calc(var(--factor) * 13);
 }
 
 .flip-clock__half--shadowed {
@@ -76,7 +86,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.15); 
+  background: rgba(0, 0, 0, 0.15);
   z-index: 1;
 }
 
@@ -90,9 +100,14 @@ body {
   top: calc(var(--factor) * -15);
 }
 
+/* Lücke zur Trennung zwischen Stunden und Minuten */
+.clock-container .flip-clock__digit:nth-child(2) {
+  margin-right: calc(var(--factor) * 2.5);
+}
+
 .divider {
   height: calc(var(--factor) * 0.5);
-  width: calc(100% - var(--factor) * 2);
+  width: calc(100% - calc(var(--factor) * 2));
   margin-left: calc(var(--factor) * 1);
   background: none;
   position: absolute;
