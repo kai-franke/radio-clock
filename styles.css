@@ -19,12 +19,11 @@ body {
   /* font-family: "Manrope", sans-serif; */
   font-family: "Rubik", sans-serif;
   font-weight: 800;
-  perspective: 1000px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
+  perspective: 1500px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
   width: calc(var(--factor) * 18.5);
   height: calc(var(--factor) * 25.5);
   margin: calc(var(--factor) * 2);
   position: absolute;
-  background: red;
 }
 
 /* Das „innere“ Flip-Element, das tatsächlich rotiert */
@@ -54,9 +53,6 @@ body {
 
 .flip-clock__card--background {
   position: absolute;
-}
-
-.flip-clock__card--foreground {
 }
 
 .flip-clock__card--foreground .flip-clock__half--lower {
