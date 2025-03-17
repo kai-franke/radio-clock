@@ -1,4 +1,3 @@
-// Hilfsfunktion, um ein Flip-Digit anhand seiner ID bequem abzufragen
 function getDigitElements(id) {
   const digitElement = document.getElementById(id);
   return {
@@ -52,32 +51,26 @@ function flipDigit(digitObj, newValue) {
     digitObj.flipCardForeground.removeEventListener("transitionend", onFlipEnd);
   };
 
-  // Sicherstellen, dass die Transition sauber startet
   digitObj.flipCardForeground.classList.remove("no-transition");
   digitObj.flipCardForeground.addEventListener("transitionend", onFlipEnd);
 }
 
-// Liest die Uhrzeit aus und aktualisiert alle Ziffern
 function updateClock() {
   const now = new Date();
-  const h = now.getHours();
-  const m = now.getMinutes();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
 
-  // Stunden und Minuten zerlegen
-  const hTensVal = h < 10 ? "0" : Math.floor(h / 10);
-  const hOnesVal = h % 10;
-  const mTensVal = Math.floor(m / 10);
-  const mOnesVal = m % 10;
+  const hoursTensValue = hours < 10 ? "0" : Math.floor(hours / 10); /* Keine führende Null anzeigen */
+  const hoursOnesValue = hours % 10;
+  const minutesTensValue = Math.floor(minutes / 10);
+  const minutesOnesValue = minutes % 10;
 
-  // Flip für jede Ziffer
-  flipDigit(hoursTens, hTensVal);
-  flipDigit(hoursOnes, hOnesVal);
-  flipDigit(minutesTens, mTensVal);
-  flipDigit(minutesOnes, mOnesVal);
+  flipDigit(hoursTens, hoursTensValue);
+  flipDigit(hoursOnes, hoursOnesValue);
+  flipDigit(minutesTens, minutesTensValue);
+  flipDigit(minutesOnes, minutesOnesValue);
 }
 
-// Beim Laden einmal die aktuelle Zeit anzeigen
 updateClock();
 
-// Dann jede Sekunde aktualisieren
 setInterval(updateClock, 1000);

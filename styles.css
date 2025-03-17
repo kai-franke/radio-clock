@@ -1,36 +1,47 @@
+/* Basis-Variablen – der Faktor passt sich über clamp() dynamisch an */
 :root {
-  --factor: 1rem;
+  --factor: clamp(0.5rem, 1vw, 1.5rem);
+  --border-radius: calc(var(--factor) * 2);
+  --box-shadow-1: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
   --gradient-1: linear-gradient(
     43deg,
     rgba(57, 57, 60, 1) 0%,
     rgba(35, 35, 37, 1) 35%,
     rgba(31, 31, 32, 1) 100%
   );
-  --shadow-1: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
 }
 
 body {
   background: var(--gradient-1);
+  margin: 0;
+  padding: 0;
+}
+
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--factor) * 1);
+  padding: calc(var(--factor) * 2);
+  height: 100vh;
+  flex-wrap: no-wrap;
 }
 
 .flip-clock__digit {
-  /* font-family: "Manrope", sans-serif; */
   font-family: "Rubik", sans-serif;
   font-weight: 800;
-  perspective: 1000px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
+  perspective: 1500px;
   width: calc(var(--factor) * 18.5);
-  /* height: calc(var(--factor) * 12); */
-  margin: calc(var(--factor) * 2);
-  position: absolute;
-  background-color: red;
+  height: calc(var(--factor) * 25.5);
+  position: relative;
 }
 
 .flip-clock__card {
   width: 100%;
-  height: 200px;
+  height: calc(var(--factor) * 12.5);
   position: relative;
-  transform-style: preserve-3d; /* ermöglicht 3D-Ebenen */
-  transform-origin: center calc(100% + 10px);
+  transform-style: preserve-3d;
+  transform-origin: center calc(100% + calc(var(--factor) * 0.5));
   transition: transform 1s cubic-bezier(0.84, 0, 0.98, 0.56);
 }
 
@@ -38,15 +49,15 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* verhindert Durchscheinen der Rückseite */
+  backface-visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 400px;
+  font-size: calc(var(--factor) * 25);
   overflow: hidden;
   color: #fff;
   background: var(--gradient-1);
-  border-radius: 25px;
+  border-radius: var(--border-radius);
 }
 
 .flip-clock__card--background {
@@ -55,19 +66,18 @@ body {
 
 .flip-clock__card--foreground .flip-clock__half--lower {
   transform: rotateX(180deg);
-  top: 10px;
+  top: calc(var(--factor) * 0.5);
 }
 
 .flip-clock__card--background .flip-clock__half--lower {
-  top: 210px;
+  top: calc(var(--factor) * 13);
 }
 
 .flip-clock__half--shadowed {
-  border-radius: 25px;
-  box-shadow: var(--shadow-1);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-1);
 }
 
-/*Abdunkeln der unteren Hälften*/
 .flip-clock__half--lower::before {
   content: "";
   position: absolute;
@@ -81,23 +91,28 @@ body {
 
 .flip-clock__digit-value--upper {
   position: absolute;
-  top: -30px;
+  top: calc(var(--factor) * -2);
 }
 
 .flip-clock__digit-value--lower {
   position: absolute;
-  top: -230px;
+  top: calc(var(--factor) * -15);
+}
+
+/* Lücke zur Trennung zwischen Stunden und Minuten */
+.clock-container .flip-clock__digit:nth-child(2) {
+  margin-right: calc(var(--factor) * 2.5);
 }
 
 .divider {
-  height: 10px;
-  width: calc(100% - 35px);
-  margin-left: 15px;
+  height: calc(var(--factor) * 0.5);
+  width: calc(100% - calc(var(--factor) * 2));
+  margin-left: calc(var(--factor) * 1);
   background: none;
   position: absolute;
-  top: 200px;
-  box-shadow: var(--shadow-1);
-  border-radius: 25px;
+  top: calc(var(--factor) * 12.5);
+  box-shadow: var(--box-shadow-1);
+  border-radius: var(--border-radius);
 }
 
 .no-transition {
@@ -106,45 +121,4 @@ body {
 
 .flip {
   transform: rotateX(-180deg);
-}
-
-/* 
-   +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-   NEUE REGELN für .clock-container und die 4 Digit-Artikel
-   +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-*/
-.clock-container {
-  /* Legt eine große Fläche an, in der die vier Digits platziert werden */
-  position: relative;
-  /* Breite und Höhe so wählen, dass alle 4 Ziffern Platz haben */
-  width: 1600px;
-  height: 100vh;
-  /* z.B. zentriert die Container-Sektion im Body */
-  margin: 0 auto;
-}
-
-/* 
-   Wir nutzen nth-of-type, um den einzelnen Digit-Elementen 
-   unterschiedliche left-Offsets zu geben.
-   Jede Ziffer ist 300px breit + margin: 50px. 
-   Das bedeutet, wir rücken sie in 400er-Schritten nach rechts.
-*/
-.clock-container .flip-clock__digit:nth-of-type(1) {
-  left: 0;
-  top: 0;
-}
-
-.clock-container .flip-clock__digit:nth-of-type(2) {
-  left: 330px; /* 300 + 50 margin (etwa) */
-  top: 0;
-}
-
-.clock-container .flip-clock__digit:nth-of-type(3) {
-  left: 700px;
-  top: 0;
-}
-
-.clock-container .flip-clock__digit:nth-of-type(4) {
-  left: 1030px;
-  top: 0;
 }
