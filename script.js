@@ -64,7 +64,7 @@ function updateClock() {
   const m = now.getMinutes();
 
   // Stunden und Minuten zerlegen
-  const hTensVal = Math.floor(h / 10);
+  const hTensVal = h < 10 ? "0" : Math.floor(h / 10);
   const hOnesVal = h % 10;
   const mTensVal = Math.floor(m / 10);
   const mOnesVal = m % 10;

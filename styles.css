@@ -1,4 +1,5 @@
 :root {
+  --factor: 1rem;
   --gradient-1: linear-gradient(
     43deg,
     rgba(57, 57, 60, 1) 0%,
@@ -17,10 +18,11 @@ body {
   font-family: "Rubik", sans-serif;
   font-weight: 800;
   perspective: 1000px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
-  width: 300px;
-  height: 410px;
-  margin: 50px;
-  position: absolute; /* NICHT geändert */
+  width: calc(var(--factor) * 18.5);
+  /* height: calc(var(--factor) * 12); */
+  margin: calc(var(--factor) * 2);
+  position: absolute;
+  background-color: red;
 }
 
 .flip-clock__card {
@@ -116,7 +118,7 @@ body {
   position: relative;
   /* Breite und Höhe so wählen, dass alle 4 Ziffern Platz haben */
   width: 1600px;
-  height: 600px;
+  height: 100vh;
   /* z.B. zentriert die Container-Sektion im Body */
   margin: 0 auto;
 }
@@ -133,16 +135,16 @@ body {
 }
 
 .clock-container .flip-clock__digit:nth-of-type(2) {
-  left: 400px; /* 300 + 50 margin (etwa) */
+  left: 330px; /* 300 + 50 margin (etwa) */
   top: 0;
 }
 
 .clock-container .flip-clock__digit:nth-of-type(3) {
-  left: 800px;
+  left: 700px;
   top: 0;
 }
 
 .clock-container .flip-clock__digit:nth-of-type(4) {
-  left: 1200px;
+  left: 1030px;
   top: 0;
 }
