@@ -34,6 +34,7 @@ body {
   width: calc(var(--factor) * 18.5);
   height: calc(var(--factor) * 25.5);
   position: relative;
+
 }
 
 .flip-clock__card {
