@@ -1,4 +1,7 @@
 :root {
+  --factor: 1rem;
+  --border-radius: calc(var(--factor) * 2);
+  --box-shadow-1: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
   --gradient-1: linear-gradient(
     43deg,
     rgba(57, 57, 60, 1) 0%,
@@ -17,37 +20,36 @@ body {
   font-family: "Rubik", sans-serif;
   font-weight: 800;
   perspective: 1000px; /* je größer der Wert, desto „flacher“ wirkt der 3D-Effekt */
-  width: 300px;
-  height: 410px;
-  margin: 50px;
+  width: calc(var(--factor) * 18.5);
+  height: calc(var(--factor) * 25.5);
+  margin: calc(var(--factor) * 2);
   position: absolute;
+  background: red;
 }
 
 /* Das „innere“ Flip-Element, das tatsächlich rotiert */
 .flip-clock__card {
-  /* background-color: transparent; */
   width: 100%;
-  height: 200px;
+  height: calc(var(--factor) * 12.5);
   position: relative;
   transform-style: preserve-3d; /* ermöglicht 3D-Ebenen */
-  transform-origin: center calc(100% + 10px);
+  transform-origin: center calc(100% + var(--factor) * 0.5);
   transition: transform 1s cubic-bezier(0.84, 0, 0.98, 0.56);
 }
 
-/* Vorder- und Rückseite platzieren */
 .flip-clock__half {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* verhindert Durchscheinen der Rückseite */
+  backface-visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 400px;
+  font-size: calc(var(--factor) * 25);
   overflow: hidden;
   color: #fff;
   background: var(--gradient-1);
-  border-radius: 25px;
+  border-radius: var(--border-radius);
 }
 
 .flip-clock__card--background {
@@ -59,16 +61,16 @@ body {
 
 .flip-clock__card--foreground .flip-clock__half--lower {
   transform: rotateX(180deg);
-  top: 10px;
+  top: calc(var(--factor) * 0.5);
 }
 
 .flip-clock__card--background .flip-clock__half--lower {
-  top: 210px;
+  top: calc(var(--factor) * 13);;
 }
 
 .flip-clock__half--shadowed {
-  border-radius: 25px;
-  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-1);
 }
 
 .flip-clock__half--lower::before {
@@ -78,29 +80,29 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.15); /* 10% schwarze Überlagerung */
+  background: rgba(0, 0, 0, 0.15); 
   z-index: 1;
 }
 
 .flip-clock__digit-value--upper {
   position: absolute;
-  top: -30px;
+  top: calc(var(--factor) * -2);
 }
 
 .flip-clock__digit-value--lower {
   position: absolute;
-  top: -230px;
+  top: calc(var(--factor) * -15);
 }
 
 .divider {
-  height: 10px;
-  width: calc(100% - 35px);
-  margin-left: 15px;
+  height: calc(var(--factor) * 0.5);
+  width: calc(100% - var(--factor) * 2);
+  margin-left: calc(var(--factor) * 1);
   background: none;
   position: absolute;
-  top: 200px;
-  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.7);
-  border-radius: 25px;
+  top: calc(var(--factor) * 12.5);
+  box-shadow: var(--box-shadow-1);
+  border-radius: var(--border-radius);
 }
 
 .no-transition {
