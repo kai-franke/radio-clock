@@ -28,10 +28,10 @@ body {
 }
 
 .flip-clock__digit {
-  font-family: "Rubik", sans-serif;
+  font-family: "Staatliches", sans-serif;
   font-weight: 800;
   perspective: 1500px;
-  width: calc(var(--factor) * 18.5);
+  width: calc(var(--factor) * 16);
   height: calc(var(--factor) * 25.5);
   position: relative;
 
