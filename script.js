@@ -60,7 +60,7 @@ function updateClock() {
   const hours = now.getHours();
   const minutes = now.getMinutes();
 
-  const hoursTensValue = hours < 10 ? "0" : Math.floor(hours / 10); /* Keine führende Null anzeigen */
+  const hoursTensValue = hours < 10 ? "" : Math.floor(hours / 10); /* Keine führende Null anzeigen */
   const hoursOnesValue = hours % 10;
   const minutesTensValue = Math.floor(minutes / 10);
   const minutesOnesValue = minutes % 10;
